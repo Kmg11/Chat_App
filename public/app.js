@@ -43,26 +43,26 @@ msgInput.addEventListener("keypress", () => {
 socket.on("message", ({ name, text, time }) => {
 	activity.textContent = "";
 	const message = document.createElement("li");
-	message.classList = "post";
+	if (name !== "Admin") message.classList = "message";
 
-	if (name === nameInput.value) message.classList.add("post--left");
+	if (name === nameInput.value) message.classList.add("message--right");
 	if (name !== nameInput.value && name !== "Admin") {
-		message.classList.add("post--right");
+		message.classList.add("message--left");
 	}
 
 	if (name !== "Admin") {
 		message.innerHTML = `
-			<div class="post__header post__header--${
-				name === nameInput.value ? "user" : "reply"
-			}">
-				<span class="post__header--name">${name}</span>
-				<span class="post__header--time">${time}</span>
+			<div class="message__header">
+				<span class="message__header--name">${name}</span>
+				<span class="message__header--time">${time}</span>
 			</div>
 
-			<div class="post__text">${text}</div>
+			<div class="message__text message__text--${
+				name === nameInput.value ? "user" : "reply"
+			}">${text}</div>
 		`;
 	} else {
-		message.innerHTML = `<div class="post__text">${text}</div>`;
+		message.innerHTML = `<div class="admin-message">${text}</div>`;
 	}
 
 	chatDisplay.appendChild(message);

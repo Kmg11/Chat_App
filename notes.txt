@@ -1,0 +1,19 @@
+Enhancements
+
+- Enhance styles
+- Convert backend to typescript
+- Enhance backend structure
+- Remove server folder
+
+========================================================================
+
+Enhancements
+
+- Enhance activity ui
+- Enhance Show list of current users in room ui
+- Enhance Show list of rooms ui [ make it clickable ]
+
+- Hide chat make user join first
+- Remove server folder
+- Convert code to typescript
+- Empty chat when change room

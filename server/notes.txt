@@ -1,7 +1,0 @@
-Enhancements
-
-- Change styles
-- Hide chat make user join first
-- Change chat direction
-- Remove server folder
-- Convert code to typescript

@@ -34,9 +34,6 @@ const io = new Server(appServer, {
 io.on("connection", (socket) => {
 	console.log(`User ${socket.id} connected.`);
 
-	// * Upon connection, send a welcome message, to user connected only
-	socket.emit("message", buildMsg(ADMIN, "Welcome to the chat!"));
-
 	socket.on("enterRoom", ({ name, room }) => {
 		// * Leave previous room
 		const previousRoom = getUser(socket.id)?.room;
