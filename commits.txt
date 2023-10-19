@@ -1,0 +1,32 @@
+Enhancements
+
+- Enhance styles
+- Convert backend to typescript
+- Enhance backend structure
+- Remove server folder
+
+========================================================================
+
+Start Converting Client to VueJS
+
+- Client
+	- Setup vue
+	- Install vuetify
+	- Setup socket.io-client
+	- Create JoinRoomForm component
+
+- Server
+	- Setup dotenv
+	- Install ts-node-dev
+	- Uninstall ts-node
+
+========================================================================
+
+- Client
+	- Hide chat make user join first
+	- Enhance activity ui
+	- Enhance Show list of current users in room ui
+	- Enhance Show list of rooms ui [ make it clickable ]
+
+- Server
+	- Empty chat when change room

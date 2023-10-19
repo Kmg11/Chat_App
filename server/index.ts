@@ -1,8 +1,11 @@
+import dotenv from "dotenv";
 import express from "express";
 import { Server } from "socket.io";
 import path from "path";
 import { ClientToServerEvents, ServerToClientEvents } from "./types";
 import { handleSocketConnection } from "./socketHandler";
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3500;
 const app = express();
@@ -14,7 +17,7 @@ const appServer = app.listen(PORT, () => {
 });
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents>(appServer, {
-	cors: { origin: false },
+	cors: { origin: process.env.CLIENT_URL ?? false },
 });
 
 handleSocketConnection(io);
