@@ -22,11 +22,37 @@ Start Converting Client to VueJS
 
 ========================================================================
 
+Handle join room | Enhance file structure | Create enterRoom event | Add socket types
+
 - Client
+	- Convert room input to combobox to show list of rooms
+	- Handle socket types in client
+	- Listen to roomList event
+	- Create enterRoom event
+	- Handle join room
+	- Create socket folder instead of socket.ts file
+	- Create RoomView and room route
+	- Create folder for HomeView and move JoinRoomForm component to HomeView folder
+	
+- Server
+	- Send current rooms to user when connect
+
+========================================================================
+
+- Client
+	- Redirect to room page after join room
+	- Create room page ui
+	- Create ChatDisplay
+	- Create SendMessageForm
+	- Handle Send Message
+	- Create sendMessage event
+
 	- Hide chat make user join first
 	- Enhance activity ui
 	- Enhance Show list of current users in room ui
 	- Enhance Show list of rooms ui [ make it clickable ]
+	- Remove watch from socket file
+	- Remove public folder from backend
 
 - Server
 	- Empty chat when change room

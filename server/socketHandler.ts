@@ -86,6 +86,9 @@ export function handleSocketConnection(
 			const room = getUser(socket.id)?.room;
 			if (room) io.to(room).emit("message", buildMsg(name, text));
 		});
+
+		// * Send rooms list to the user connected
+		io.emit("roomList", { rooms: getAllActiveRooms() });
 	});
 
 	function buildMsg(name: string, text: string) {
