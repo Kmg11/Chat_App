@@ -29,7 +29,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { socketState, enterRoom } from '@/socket';
+import { socketState } from '@/socket';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const valid = ref(false);
 const userName = ref('');
@@ -50,6 +53,6 @@ const roomNameRules = [
 ];
 
 const handleJoinRoom = () => {
-  enterRoom({ name: userName.value, room: roomName.value });
+  router.push({ name: 'room', params: { userName: userName.value, roomName: roomName.value } });
 };
 </script>

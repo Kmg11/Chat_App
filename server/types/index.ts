@@ -12,6 +12,7 @@ export interface MessageType {
 
 export interface ClientToServerEvents {
 	enterRoom: ({ name, room }: Pick<UserType, "name" | "room">) => void;
+	leaveRoom: () => void;
 	activity: (name: string) => void;
 	message: ({ name, text }: Pick<MessageType, "name" | "text">) => void;
 }

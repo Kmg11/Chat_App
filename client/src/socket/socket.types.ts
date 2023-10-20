@@ -12,8 +12,15 @@ export interface MessageType {
 
 export interface SocketStateType {
   connected: boolean;
+  connectionLoading: boolean;
+  connectionError: string | null;
+
   rooms: UserType['room'][];
-  joinedRoom: UserType['room'] | null;
+
+  joinedRoom: {
+    name: UserType['room'] | null;
+    users: UserType[];
+  };
 }
 
 export interface ServerToClientEventsType {
@@ -25,6 +32,7 @@ export interface ServerToClientEventsType {
 
 export interface ClientToServerEventsType {
   enterRoom: ({ name, room }: Pick<UserType, 'name' | 'room'>) => void;
+  leaveRoom: () => void;
   activity: (name: string) => void;
   message: ({ name, text }: Pick<MessageType, 'name' | 'text'>) => void;
 }

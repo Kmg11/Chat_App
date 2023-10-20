@@ -15,27 +15,12 @@ export function handleSocketConnection(
 	io: Server<ClientToServerEvents, ServerToClientEvents, DefaultEventsMap, any>
 ) {
 	io.on("connection", (socket) => {
+		// * Send rooms list to the user connected
+		io.emit("roomList", { rooms: getAllActiveRooms() });
+
+		// * Listen for enterRoom event
 		socket.on("enterRoom", ({ name, room }) => {
-			// * Leave previous room
-			const previousRoom = getUser(socket.id)?.room;
-
-			if (previousRoom) {
-				socket.leave(previousRoom);
-
-				io.to(previousRoom).emit(
-					"message",
-					buildMsg(ADMIN, `${name} has left the chat`)
-				);
-			}
-
 			const user = activatedUser({ id: socket.id, name, room });
-
-			// * Cannot update previous room users list until after the state update in activated user
-			if (previousRoom) {
-				io.to(previousRoom).emit("userList", {
-					users: getUsersInRoom(previousRoom),
-				});
-			}
 
 			// * Join room
 			socket.join(user.room);
@@ -53,6 +38,26 @@ export function handleSocketConnection(
 
 			// * Update rooms list for all users
 			io.emit("roomList", { rooms: getAllActiveRooms() });
+		});
+
+		// * Listen for leaveRoom event
+		socket.on("leaveRoom", () => {
+			const user = getUser(socket.id);
+
+			if (user) {
+				userLeave(socket.id);
+
+				socket.leave(user.room);
+
+				io.to(user.room).emit(
+					"message",
+					buildMsg(ADMIN, `${user.name} has left the chat`)
+				);
+
+				io.to(user.room).emit("userList", { users: getUsersInRoom(user.room) });
+
+				io.emit("roomList", { rooms: getAllActiveRooms() });
+			}
 		});
 
 		// * When a user disconnects, send a message to all users except the user disconnected
@@ -86,9 +91,6 @@ export function handleSocketConnection(
 			const room = getUser(socket.id)?.room;
 			if (room) io.to(room).emit("message", buildMsg(name, text));
 		});
-
-		// * Send rooms list to the user connected
-		io.emit("roomList", { rooms: getAllActiveRooms() });
 	});
 
 	function buildMsg(name: string, text: string) {
