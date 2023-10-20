@@ -2,11 +2,10 @@ import { reactive, watch } from 'vue';
 import { io, Socket } from 'socket.io-client';
 import type {
   ClientToServerEventsType,
-  MessageType,
   ServerToClientEventsType,
-  SocketStateType,
-  UserType
+  SocketStateType
 } from './socket.types';
+import type { MessageType, UserType } from '@/types';
 
 export const socketState = reactive<SocketStateType>({
   connected: false,
@@ -18,7 +17,8 @@ export const socketState = reactive<SocketStateType>({
   joinedRoom: {
     name: null,
     users: [],
-    messages: []
+    messages: [],
+    currentUser: { id: '', name: '' }
   }
 });
 
@@ -56,14 +56,22 @@ socket.on('message', (msg) => {
 
 export function enterRoom({ name, room }: Pick<UserType, 'name' | 'room'>) {
   socket.emit('enterRoom', { name, room });
-  socketState.joinedRoom.name = room;
+  socketState.joinedRoom = {
+    currentUser: { id: socket.id, name },
+    messages: [],
+    name: room,
+    users: []
+  };
 }
 
 export function leaveRoom() {
   socket.emit('leaveRoom');
-  socketState.joinedRoom.name = null;
-  socketState.joinedRoom.users = [];
-  socketState.joinedRoom.messages = [];
+  socketState.joinedRoom = {
+    currentUser: { id: '', name: '' },
+    messages: [],
+    name: null,
+    users: []
+  };
 }
 
 export function sendMessage({ text }: Pick<MessageType, 'text'>) {

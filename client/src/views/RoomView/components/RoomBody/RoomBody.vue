@@ -10,7 +10,16 @@ import ChatDisplay from './ChatDisplay/ChatDisplay.vue';
     </v-col>
 
     <v-col cols="2">
-      <section :style="{ display: 'flex', flexDirection: 'column', gap: '1rem' }">
+      <section
+        :style="{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          height: '100%',
+          padding: '1rem',
+          backgroundColor: '#222'
+        }"
+      >
         <p v-for="(user, i) in socketState.joinedRoom.users" :key="user.id">
           {{ i + 1 }}. {{ user.name }}
         </p>

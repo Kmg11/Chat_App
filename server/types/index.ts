@@ -5,7 +5,8 @@ export interface UserType {
 }
 
 export interface MessageType {
-	name: UserType["name"];
+	type: "admin" | "user";
+	user: Pick<UserType, "id" | "name">;
 	text: string;
 	time: string;
 }
@@ -14,7 +15,7 @@ export interface ClientToServerEvents {
 	enterRoom: ({ name, room }: Pick<UserType, "name" | "room">) => void;
 	leaveRoom: () => void;
 	activity: (name: string) => void;
-	message: ({ text }: Pick<MessageType, "name" | "text">) => void;
+	message: ({ text }: Pick<MessageType, "text">) => void;
 }
 
 export interface ServerToClientEvents {

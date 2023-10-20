@@ -1,14 +1,4 @@
-export interface UserType {
-  id: string;
-  name: string;
-  room: string;
-}
-
-export interface MessageType {
-  name: UserType['name'];
-  text: string;
-  time: string;
-}
+import type { MessageType, UserType } from '@/types';
 
 export interface SocketStateType {
   connected: boolean;
@@ -21,6 +11,7 @@ export interface SocketStateType {
     name: UserType['room'] | null;
     users: UserType[];
     messages: MessageType[];
+    currentUser: { id: string; name: string };
   };
 }
 

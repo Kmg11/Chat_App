@@ -1,5 +1,9 @@
 import { Server } from "socket.io";
-import { ClientToServerEvents, ServerToClientEvents } from "./types";
+import {
+	ClientToServerEvents,
+	MessageType,
+	ServerToClientEvents,
+} from "./types";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import {
 	activatedUser,
@@ -8,8 +12,6 @@ import {
 	getUsersInRoom,
 	userLeave,
 } from "./userState";
-
-const ADMIN = "Admin";
 
 export function handleSocketConnection(
 	io: Server<ClientToServerEvents, ServerToClientEvents, DefaultEventsMap, any>
@@ -26,12 +28,24 @@ export function handleSocketConnection(
 			socket.join(user.room);
 
 			// * Send a message to the user connected
-			socket.emit("message", buildMsg(ADMIN, `Welcome to room ${user.room}`));
+			socket.emit(
+				"message",
+				buildMsg({
+					type: "admin",
+					text: `Welcome to ${user.room}`,
+					user: { id: "", name: "" },
+				})
+			);
 
 			// * Broadcast to all users in the room that a user has joined
-			socket.broadcast
-				.to(room)
-				.emit("message", buildMsg(ADMIN, `${user.name} has joined the chat`));
+			socket.broadcast.to(room).emit(
+				"message",
+				buildMsg({
+					type: "admin",
+					text: `${user.name} has joined the chat`,
+					user: { id: "", name: "" },
+				})
+			);
 
 			// * Send users and room info
 			io.to(user.room).emit("userList", { users: getUsersInRoom(user.room) });
@@ -51,7 +65,11 @@ export function handleSocketConnection(
 
 				io.to(user.room).emit(
 					"message",
-					buildMsg(ADMIN, `${user.name} has left the chat`)
+					buildMsg({
+						type: "admin",
+						text: `${user.name} has left the chat`,
+						user: { id: "", name: "" },
+					})
 				);
 
 				io.to(user.room).emit("userList", { users: getUsersInRoom(user.room) });
@@ -68,7 +86,11 @@ export function handleSocketConnection(
 			if (user) {
 				io.to(user.room).emit(
 					"message",
-					buildMsg(ADMIN, `${user.name} has left the chat`)
+					buildMsg({
+						type: "admin",
+						text: `${user.name} has left the chat`,
+						user: { id: "", name: "" },
+					})
 				);
 
 				io.to(user.room).emit("userList", { users: getUsersInRoom(user.room) });
@@ -90,14 +112,26 @@ export function handleSocketConnection(
 		socket.on("message", ({ text }) => {
 			const user = getUser(socket.id);
 			if (user?.room) {
-				io.to(user?.room).emit("message", buildMsg(user?.name, text));
+				io.to(user?.room).emit(
+					"message",
+					buildMsg({
+						type: "user",
+						user: { id: user.id, name: user.name },
+						text,
+					})
+				);
 			}
 		});
 	});
 
-	function buildMsg(name: string, text: string) {
+	function buildMsg({
+		user,
+		text,
+		type = "user",
+	}: Omit<MessageType, "time">): MessageType {
 		return {
-			name,
+			type,
+			user,
 			text,
 			time: new Intl.DateTimeFormat("default", {
 				hour: "numeric",

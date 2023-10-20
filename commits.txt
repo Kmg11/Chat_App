@@ -72,15 +72,33 @@ Create users list | Create SendMessageForm | Create sendMessage event | Listen t
 
 ========================================================================
 
+Create Message component | Create AdminMessage and UserMessage components | Enhance MessageType
+
 - Client
-	- Create ChatDisplay
-	- Enhance activity ui
-	- Enhance Show list of current users in room ui
-	- split socket events in separate file
-	- Add scrollbar to users list
-	- Handle admin messages
+	- Add type and user props to MessageType
+	- Create types folder
+	- Move UserType and MessageType to types folder
+	- Create Messages component
+	- Create AdminMessage component
+	- Create UserMessage component
+	- Add background color to users list
 
 - Server
+	- Enhance MessageType
+
+========================================================================
+
+- Client
+	- Create activity ui
+	- Listen to activity event
+	- Create activity event
+	
+	- scroll down to message and handle height
+	- split socket events in separate file
+	- Add scrollbar to users list
+
+- Server
+	- Enhance socket file structure [ create admin messages file ]
 	- Type documentation for socket
 
 End Points

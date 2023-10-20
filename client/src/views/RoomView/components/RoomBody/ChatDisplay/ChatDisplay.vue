@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SendMessageForm from './SendMessageForm//SendMessageForm.vue';
+import Messages from './Messages/Messages.vue';
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import SendMessageForm from './SendMessageForm//SendMessageForm.vue';
       gap: '1rem'
     }"
   >
-    <div>Messages</div>
+    <Messages />
     <SendMessageForm />
   </section>
 </template>
