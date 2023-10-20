@@ -88,13 +88,21 @@ Create Message component | Create AdminMessage and UserMessage components | Enha
 
 ========================================================================
 
+Enhance client socket file
+
+- Client
+	- Create socket.events file and move all events to it
+	- Create socket.listeners file and move all listeners to it
+
+========================================================================
+
 - Client
 	- Create activity ui
 	- Listen to activity event
 	- Create activity event
-	
+
+	-	Change scrollbar color
 	- scroll down to message and handle height
-	- split socket events in separate file
 	- Add scrollbar to users list
 
 - Server
