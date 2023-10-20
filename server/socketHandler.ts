@@ -87,9 +87,11 @@ export function handleSocketConnection(
 		});
 
 		// * Listen for a message event
-		socket.on("message", ({ name, text }) => {
-			const room = getUser(socket.id)?.room;
-			if (room) io.to(room).emit("message", buildMsg(name, text));
+		socket.on("message", ({ text }) => {
+			const user = getUser(socket.id);
+			if (user?.room) {
+				io.to(user?.room).emit("message", buildMsg(user?.name, text));
+			}
 		});
 	});
 

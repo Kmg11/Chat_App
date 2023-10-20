@@ -20,6 +20,7 @@ export interface SocketStateType {
   joinedRoom: {
     name: UserType['room'] | null;
     users: UserType[];
+    messages: MessageType[];
   };
 }
 
@@ -34,5 +35,5 @@ export interface ClientToServerEventsType {
   enterRoom: ({ name, room }: Pick<UserType, 'name' | 'room'>) => void;
   leaveRoom: () => void;
   activity: (name: string) => void;
-  message: ({ name, text }: Pick<MessageType, 'name' | 'text'>) => void;
+  message: ({ text }: Pick<MessageType, 'text'>) => void;
 }

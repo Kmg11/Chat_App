@@ -1,7 +1,8 @@
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import { io, Socket } from 'socket.io-client';
 import type {
   ClientToServerEventsType,
+  MessageType,
   ServerToClientEventsType,
   SocketStateType,
   UserType
@@ -16,7 +17,8 @@ export const socketState = reactive<SocketStateType>({
 
   joinedRoom: {
     name: null,
-    users: []
+    users: [],
+    messages: []
   }
 });
 
@@ -48,6 +50,10 @@ socket.on('userList', ({ users }) => {
   socketState.joinedRoom.users = users;
 });
 
+socket.on('message', (msg) => {
+  socketState.joinedRoom.messages.push(msg);
+});
+
 export function enterRoom({ name, room }: Pick<UserType, 'name' | 'room'>) {
   socket.emit('enterRoom', { name, room });
   socketState.joinedRoom.name = room;
@@ -57,4 +63,13 @@ export function leaveRoom() {
   socket.emit('leaveRoom');
   socketState.joinedRoom.name = null;
   socketState.joinedRoom.users = [];
+  socketState.joinedRoom.messages = [];
 }
+
+export function sendMessage({ text }: Pick<MessageType, 'text'>) {
+  socket.emit('message', { text });
+}
+
+watch(socketState, () => {
+  console.log(socketState);
+});

@@ -1,1 +1,1 @@
-export { enterRoom, leaveRoom, socketState, socket } from './socket';
+export { enterRoom, leaveRoom, sendMessage, socketState, socket } from './socket';

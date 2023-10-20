@@ -58,15 +58,27 @@ Create RoomHeader | Create leaveRoom event | Create userList event | Enhance ent
 
 ========================================================================
 
-- Client
-	- Create RoomBody
-	- Create ChatDisplay
-	- Create SendMessageForm
-		- Handle Send Message
-		- Create sendMessage event
+Create users list | Create SendMessageForm | Create sendMessage event | Listen to message event | Enhance message event
 
+- Client
+	- Create users list
+	- Create SendMessageForm
+	- Create sendMessage event
+	- Listen to message event
+	- Enhance message event
+
+- Server
+	- Enhance message event
+
+========================================================================
+
+- Client
+	- Create ChatDisplay
 	- Enhance activity ui
 	- Enhance Show list of current users in room ui
+	- split socket events in separate file
+	- Add scrollbar to users list
+	- Handle admin messages
 
 - Server
 	- Type documentation for socket

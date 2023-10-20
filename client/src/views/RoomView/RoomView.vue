@@ -2,8 +2,8 @@
 import { onMounted } from 'vue';
 import { enterRoom } from '@/socket';
 import { useRoute } from 'vue-router';
-import RoomHeader from './components/RoomHeader.vue';
-import RoomBody from './components/RoomBody.vue';
+import RoomHeader from './components/RoomHeader/RoomHeader.vue';
+import RoomBody from './components/RoomBody/RoomBody.vue';
 
 const route = useRoute();
 const params = route.params as { userName: string; roomName: string };
