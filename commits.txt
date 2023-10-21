@@ -142,12 +142,26 @@ Enhance Socket Structure
 
 ========================================================================
 
+Create README file
+
+- Client
+	- Remove client README file
+
+- Server
+	- Remove public folder from backend
+
+- Global
+	- Create README file
+
+========================================================================
+
+- Rename repo
 - Client
 	- Error message problem
+	- Change room label to Room name (choose or create room)
 
-End Points
-
-- Remove public folder from backend
-- Check Responsive
-- Add README file
-- Remove client README file
+- README
+	- Add live link
+	- Add project link on portfolio
+	- Type Getting Started
+	- Review github repo url
