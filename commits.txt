@@ -125,13 +125,28 @@ Enhance RoomHeader | Enhance RoomBody
 
 ========================================================================
 
+Enhance Socket Structure
+
 - Server
-	- Enhance socket file structure [ create admin messages file ]
-	- Type documentation for socket
+	- Create SocketServerType
+	- Create socket folder
+	- Create socket.utils file
+		- Move buildMsg function to it
+		- Create buildAdminMsg function
+	- Create socket.events file
+		- Create sendRoomList event
+		- Create sendUserList event
+		- Create sendRoomInfo event
+	- Create socket.types file
+	- Create socket.listeners file
+
+========================================================================
+
+- Client
+	- Error message problem
 
 End Points
 
-- Check backend and frontend state
 - Remove public folder from backend
 - Check Responsive
 - Add README file
