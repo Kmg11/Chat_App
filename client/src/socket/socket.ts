@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue';
+import { reactive } from 'vue';
 import { io, Socket } from 'socket.io-client';
 import type {
   ClientToServerEventsType,
@@ -24,10 +24,9 @@ export const socketState = reactive<SocketStateType>({
 
 const URL = import.meta.env.SOCKET_URL ?? 'ws://localhost:3500';
 
-export const socket: Socket<ServerToClientEventsType, ClientToServerEventsType> = io(URL);
+export const socket: Socket<
+  ServerToClientEventsType,
+  ClientToServerEventsType
+> = io(URL);
 
 socketListeners(socket, socketState);
-
-watch(socketState, () => {
-  console.log(socketState);
-});

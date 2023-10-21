@@ -1,6 +1,6 @@
 <template>
   <li :class="`message message--${isUser ? 'right' : 'left'}`">
-    <div class="message__header">
+    <div class="message__header" v-if="!isUser">
       <span class="message__header--name">{{ props.message.user.name }}</span>
       <span class="message__header--time">{{ props.message.time }}</span>
     </div>
@@ -29,7 +29,8 @@ const isUser = computed(() => {
 
 <style scoped>
 .message {
-  width: 60%;
+  max-width: 60%;
+  width: fit-content;
 }
 
 .message--left {
@@ -64,6 +65,7 @@ const isUser = computed(() => {
   padding: 0.5rem 0.5rem;
   background-color: #eee;
   border-radius: 10px;
+  word-break: break-word;
 }
 
 .message__text--user {

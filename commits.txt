@@ -112,10 +112,18 @@ Create ActivityIndicator component | Listen to activity event | Create activity 
 
 ========================================================================
 
+Enhance RoomHeader | Enhance RoomBody
+
 - Client
-	-	Change scrollbar color
-	- scroll down to message and handle height
-	- Add scrollbar to users list
+	- Move UsersList to RoomHeader
+	- Enhance UsersList style
+	- Remove ChatDisplay component and move content to RoomBody
+	- Change leave button text to icon
+	- Handle height of the room
+	- Handle scroll to bottom when new message added
+	- Auto focus on message input
+
+========================================================================
 
 - Server
 	- Enhance socket file structure [ create admin messages file ]

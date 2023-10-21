@@ -2,9 +2,10 @@
   <v-form
     v-model="valid"
     @submit.prevent="handleSendMessage"
-    :style="{ width: '100%', display: 'flex', gap: '0.5rem' }"
+    :style="{ display: 'flex', gap: '0.5rem' }"
   >
     <v-text-field
+      ref="messageInput"
       v-model="message"
       :rules="messageRules"
       variant="solo-filled"
@@ -22,11 +23,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { sendMessage, sendActivity } from '@/socket';
 
 const valid = ref(false);
 const message = ref('');
+const messageInput = ref(null);
 
 const messageRules = [
   (value: string) => {
@@ -41,4 +43,8 @@ const handleSendMessage = () => {
     message.value = '';
   }
 };
+
+onMounted(() => {
+  messageInput.value.focus();
+});
 </script>

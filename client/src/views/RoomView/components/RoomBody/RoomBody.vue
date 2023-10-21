@@ -1,16 +1,22 @@
 <script setup lang="ts">
-import ChatDisplay from './ChatDisplay/ChatDisplay.vue';
-import UsersList from './UsersList/UsersList.vue';
+import SendMessageForm from './SendMessageForm//SendMessageForm.vue';
+import Messages from './Messages/Messages.vue';
+import ActivityIndicator from './ActivityIndicator/ActivityIndicator.vue';
 </script>
 
 <template>
-  <v-row>
-    <v-col cols="9">
-      <ChatDisplay />
-    </v-col>
-
-    <v-col cols="3">
-      <UsersList />
-    </v-col>
-  </v-row>
+  <section
+    :style="{
+      height: '100%',
+      minHeight: '500px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexDirection: 'column',
+      gap: '1rem'
+    }"
+  >
+    <Messages />
+    <ActivityIndicator />
+    <SendMessageForm />
+  </section>
 </template>

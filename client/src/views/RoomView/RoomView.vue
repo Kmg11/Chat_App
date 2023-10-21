@@ -20,17 +20,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <RoomHeader />
-        </v-col>
-
-        <v-col cols="12">
-          <RoomBody />
-        </v-col>
-      </v-row>
-    </v-container>
+  <main
+    :style="{
+      height: '100vh',
+      minHeight: '500px',
+      maxWidth: '700px',
+      margin: 'auto',
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.7rem'
+    }"
+  >
+    <RoomHeader />
+    <RoomBody />
   </main>
 </template>
