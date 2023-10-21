@@ -12,6 +12,7 @@
       placeholder="Type a message..."
       required
       hide-details
+      @keypress="sendActivity"
     ></v-text-field>
 
     <v-btn type="submit" color="blue" size="small" :style="{ height: '100%' }">
@@ -22,7 +23,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { sendMessage } from '@/socket';
+import { sendMessage, sendActivity } from '@/socket';
 
 const valid = ref(false);
 const message = ref('');

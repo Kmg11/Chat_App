@@ -100,11 +100,11 @@ export function handleSocketConnection(
 		});
 
 		// * Listen for activity event
-		socket.on("activity", (name) => {
-			const room = getUser(socket.id)?.room;
+		socket.on("activity", () => {
+			const user = getUser(socket.id);
 
-			if (room) {
-				socket.broadcast.to(room).emit("activity", name);
+			if (user?.room) {
+				socket.broadcast.to(user?.room).emit("activity", { user });
 			}
 		});
 

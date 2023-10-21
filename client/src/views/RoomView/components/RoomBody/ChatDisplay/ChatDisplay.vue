@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SendMessageForm from './SendMessageForm//SendMessageForm.vue';
 import Messages from './Messages/Messages.vue';
+import ActivityIndicator from './ActivityIndicator/ActivityIndicator.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import Messages from './Messages/Messages.vue';
     }"
   >
     <Messages />
+    <ActivityIndicator />
     <SendMessageForm />
   </section>
 </template>

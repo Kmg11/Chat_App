@@ -1,6 +1,7 @@
 <template>
   <ul
     :style="{
+      flexGrow: 1,
       listStyleType: 'none',
       width: '100%',
       display: 'flex',

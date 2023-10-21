@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { enterRoom } from '@/socket';
+import { onMounted, onUnmounted } from 'vue';
+import { enterRoom, leaveRoom } from '@/socket';
 import { useRoute } from 'vue-router';
 import RoomHeader from './components/RoomHeader/RoomHeader.vue';
 import RoomBody from './components/RoomBody/RoomBody.vue';
@@ -12,6 +12,10 @@ onMounted(() => {
   if (params.userName && params.roomName) {
     enterRoom({ name: params.userName, room: params.roomName });
   }
+});
+
+onUnmounted(() => {
+  leaveRoom();
 });
 </script>
 

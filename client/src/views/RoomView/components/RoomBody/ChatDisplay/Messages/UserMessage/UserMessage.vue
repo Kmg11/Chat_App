@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
 import { socketState } from '@/socket';
 import type { MessageType } from '@/types';
 import { computed } from 'vue';

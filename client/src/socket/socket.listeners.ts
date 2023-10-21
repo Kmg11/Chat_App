@@ -34,6 +34,27 @@ export function socketListeners(
   });
 
   socket.on('message', (msg) => {
+    if (
+      msg.user.id === socketState.joinedRoom.activity?.user.id &&
+      socketState.joinedRoom.activity?.timer
+    ) {
+      clearTimeout(socketState.joinedRoom.activity?.timer);
+      socketState.joinedRoom.activity = undefined;
+    }
+
     socketState.joinedRoom.messages.push(msg);
+  });
+
+  socket.on('activity', ({ user }) => {
+    if (socketState.joinedRoom.activity?.timer) {
+      clearTimeout(socketState.joinedRoom.activity?.timer);
+    }
+
+    socketState.joinedRoom.activity = {
+      user,
+      timer: setTimeout(() => {
+        socketState.joinedRoom.activity = undefined;
+      }, 1000)
+    };
   });
 }

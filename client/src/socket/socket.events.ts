@@ -24,3 +24,7 @@ export function leaveRoom() {
 export function sendMessage({ text }: Pick<MessageType, 'text'>) {
   socket.emit('message', { text });
 }
+
+export function sendActivity() {
+  socket.emit('activity');
+}

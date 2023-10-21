@@ -96,11 +96,23 @@ Enhance client socket file
 
 ========================================================================
 
+Create ActivityIndicator component | Listen to activity event | Create activity event | Enhance activity event
+
 - Client
-	- Create activity ui
+	- Handle leave room when user close tab
+	- Create UsersList component
+	- Add title to users list
+	- Create ActivityIndicator component
 	- Listen to activity event
 	- Create activity event
+	- Enhance activity event
 
+- Server
+	- Enhance activity event
+
+========================================================================
+
+- Client
 	-	Change scrollbar color
 	- scroll down to message and handle height
 	- Add scrollbar to users list
