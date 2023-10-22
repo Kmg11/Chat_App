@@ -31,13 +31,16 @@ A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, 
 
 ## Getting Started
 
-To get started with Threads Clone, follow these steps:
+To get started with Chat App, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/Kmg11/NodeJS_Chat_App.git`
-2. Install dependencies: `cd threads-clone && npm install`
-3. Configure environment variables: Rename `.env.local.example` to `.env.local` and update the necessary values.
-4. Start the development server: `npm run dev`
-5. Open your browser and visit `http://localhost:3000` to access Threads Clone.
+1. Clone the repository: `git clone https://github.com/Kmg11/Chat_App.git`
+2. Install server dependencies: `cd chat-app/server && npm install`
+3. Install client dependencies: `cd chat-app/client && npm install`
+4. Configure server environment variables: Rename `.env.example` to `.env` and update the necessary values.
+5. Configure client environment variables: Rename `.env.local.example` to `.env.local` and update the necessary values.
+6. Start the server development server: `npm run dev`
+7. Start the client development server: `npm run dev`
+8. Open your browser and visit `http://localhost:3000` to access Chat App.
 
 ## Contributing
 

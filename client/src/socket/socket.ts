@@ -22,7 +22,7 @@ export const socketState = reactive<SocketStateType>({
   }
 });
 
-const URL = import.meta.env.SOCKET_URL ?? 'ws://localhost:3500';
+const URL = import.meta.env.VITE_SOCKET_URL ?? 'ws://localhost:3500';
 
 export const socket: Socket<
   ServerToClientEventsType,
