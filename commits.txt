@@ -190,8 +190,12 @@ Add cors url
 
 ========================================================================
 
-- README
-	- Add live link
-	- Add project link on portfolio
-	- Type Getting Started
-	- Review github repo url
+README file | Fix routing problem with Vercel
+
+- Add live link
+
+========================================================================
+
+README file
+
+- Add project link on portfolio

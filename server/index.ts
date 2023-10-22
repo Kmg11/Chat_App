@@ -20,8 +20,7 @@ app.get("/", (req, res) => {
 });
 
 const appServer = app.listen(PORT, () => {
-	console.log("Server listening on port 3500");
-	console.log("env", process.env.CLIENT_URL ?? false);
+	console.log("Server listening on port " + PORT);
 });
 
 export const io = new Server<ClientToServerEvents, ServerToClientEvents>(

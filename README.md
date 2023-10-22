@@ -4,8 +4,8 @@ A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, 
 
 ## Links
 
-- [Github](https://github.com/Kmg11/NodeJS_Chat_App "Github Repo")
-- [Live]( "Live Preview on Vercel")
+- [Github](https://github.com/Kmg11/Chat_App "Github Repo")
+- [Live](https://chat-app-client-eight.vercel.app/ "Live Preview on Vercel")
 - [Project link on my portfolio]( "Project on my portfolio")
 
 ## Table of Contents
@@ -18,7 +18,8 @@ A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, 
 
 ## Features
 
-- **Full Authentication System**: Threads Clone offers a robust authentication system that allows users to create accounts, log in securely, and start posting threads.
+- **Real-time chat:** Chat with other users in real-time.
+- **Create, join, and leave rooms:** Create, join, and leave rooms to chat with other users.
 
 ## Technologies
 
