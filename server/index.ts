@@ -25,7 +25,7 @@ const appServer = app.listen(PORT, () => {
 
 export const io = new Server<ClientToServerEvents, ServerToClientEvents>(
 	appServer,
-	{ cors: { origin: "*" } }
+	{ cors: { origin: [process.env.CLIENT_URL ?? false] } }
 );
 
 handleSocketConnection(io);
