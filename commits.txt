@@ -178,6 +178,10 @@ Fix socket url problem
 
 ========================================================================
 
+Add cors to server
+
+========================================================================
+
 - README
 	- Add live link
 	- Add project link on portfolio
