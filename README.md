@@ -6,7 +6,7 @@ A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, 
 
 - [Github](https://github.com/Kmg11/Chat_App "Github Repo")
 - [Live](https://chat-app-client-eight.vercel.app/ "Live Preview on Vercel")
-- [Project link on my portfolio]( "Project on my portfolio")
+- [Project link on my portfolio](https://kmg11.github.io/My_Official_Portfolio/project/app/chat-app "Project on my portfolio")
 
 ## Table of Contents
 
@@ -20,6 +20,8 @@ A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, 
 
 - **Real-time chat:** Chat with other users in real-time.
 - **Create, join, and leave rooms:** Create, join, and leave rooms to chat with other users.
+- **Admin messages:** Admin messages are displayed when a user joins or leaves a room.
+- **User activity:** User activity is displayed when a user is typing.
 
 ## Technologies
 
