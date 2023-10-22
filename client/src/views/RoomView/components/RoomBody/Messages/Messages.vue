@@ -35,7 +35,9 @@ const messagesListRef = ref<HTMLUListElement | null>(null);
 
 watch(socketState, async () => {
   await nextTick(() => {
-    messagesListRef.value.scrollTop = messagesListRef.value.scrollHeight;
+    if (messagesListRef.value) {
+      messagesListRef.value.scrollTop = messagesListRef.value.scrollHeight;
+    }
   });
 });
 </script>

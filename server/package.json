@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node index.js",
+		"start": "node build/index.js",
 		"dev": "ts-node-dev --respawn --transpile-only index.ts",
-		"build": "tsc"
+		"build": "tsc",
+		"type-check": "tsc --noEmit"
 	},
 	"author": "",
 	"license": "ISC",

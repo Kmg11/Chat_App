@@ -1,5 +1,6 @@
-import { SocketServerType, UserType } from "../types";
+import { UserType } from "../types";
 import { getAllActiveRooms, getUsersInRoom } from "./socket.state";
+import { SocketServerType } from "./socket.types";
 
 export function sendRoomList(io: SocketServerType) {
 	io.emit("roomList", { rooms: getAllActiveRooms() });

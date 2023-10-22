@@ -1,6 +1,6 @@
 # Chat App
 
-> A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, Node.js, and Express.js.
+A full-stack chat application built with Vue 3, Vuetify, Socket.io, Typescript, Node.js, and Express.js.
 
 ## Links
 

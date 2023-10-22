@@ -16,7 +16,14 @@
       @keypress="sendActivity"
     ></v-text-field>
 
-    <v-btn type="submit" color="blue" size="small" :style="{ height: '100%' }">
+    <v-btn
+      type="submit"
+      color="blue"
+      size="small"
+      :style="{ height: '100%' }"
+      aria-label="Send Message"
+      title="Send Message"
+    >
       <v-icon>mdi-send</v-icon>
     </v-btn>
   </v-form>
@@ -28,7 +35,7 @@ import { sendMessage, sendActivity } from '@/socket';
 
 const valid = ref(false);
 const message = ref('');
-const messageInput = ref(null);
+const messageInput = ref<HTMLInputElement>();
 
 const messageRules = [
   (value: string) => {
@@ -45,6 +52,6 @@ const handleSendMessage = () => {
 };
 
 onMounted(() => {
-  messageInput.value.focus();
+  if (messageInput.value) messageInput.value.focus();
 });
 </script>

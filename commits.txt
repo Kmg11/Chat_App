@@ -155,10 +155,24 @@ Create README file
 
 ========================================================================
 
-- Rename repo
+Enhancements | Fix [ types, build, Accessibility, SEO, eslint ] problem
+
+- Server
+	- Handle build
+	- Add build script
+	- Add type-check script
+	- Fix type problem
+
 - Client
-	- Error message problem
 	- Change room label to Room name (choose or create room)
+	- Fix Error message ui problem
+	- Fix types problems
+	- Fix eslint problems
+	- Fix build problems
+	- Fix Accessibility problems
+	- Fix SEO problems
+
+========================================================================
 
 - README
 	- Add live link

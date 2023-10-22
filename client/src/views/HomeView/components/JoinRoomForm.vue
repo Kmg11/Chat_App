@@ -1,7 +1,16 @@
 <template>
-  <v-form v-model="valid" @submit.prevent="handleJoinRoom" :style="{ width: '100%' }">
+  <v-form
+    v-model="valid"
+    @submit.prevent="handleJoinRoom"
+    :style="{ width: '100%' }"
+  >
     <v-container
-      :style="{ maxWidth: '500px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }"
+      :style="{
+        maxWidth: '500px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.5rem'
+      }"
     >
       <v-text-field
         v-model="userName"
@@ -13,14 +22,20 @@
 
       <v-combobox
         v-model="roomName"
-        label="Room name"
+        label="Room name (choose or create room)"
         :items="socketState.rooms"
         required
         hide-details
         :rules="roomNameRules"
       ></v-combobox>
 
-      <v-btn type="submit" color="blue" size="large" :disabled="!valid" :style="{ width: '100%' }">
+      <v-btn
+        type="submit"
+        color="blue"
+        size="large"
+        :disabled="!valid"
+        :style="{ width: '100%' }"
+      >
         Join room
       </v-btn>
     </v-container>
@@ -53,6 +68,9 @@ const roomNameRules = [
 ];
 
 const handleJoinRoom = () => {
-  router.push({ name: 'room', params: { userName: userName.value, roomName: roomName.value } });
+  router.push({
+    name: 'room',
+    params: { userName: userName.value, roomName: roomName.value }
+  });
 };
 </script>

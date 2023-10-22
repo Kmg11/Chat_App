@@ -32,6 +32,8 @@ const handleLeaveRoom = () => {
       :variant="'text'"
       :style="{ padding: 0, minWidth: 'auto' }"
       @click.stop="openUsersListDrawer"
+      aria-label="Open users list"
+      title="Open users list"
     >
       <v-icon>mdi-account-multiple</v-icon>
       {{ socketState.joinedRoom.users.length }}
@@ -44,6 +46,8 @@ const handleLeaveRoom = () => {
       :variant="'text'"
       @click="handleLeaveRoom"
       :style="{ padding: 0, minWidth: 'auto' }"
+      aria-label="Leave chat room"
+      title="Leave chat room"
     >
       <v-icon>mdi-logout</v-icon>
     </v-btn>

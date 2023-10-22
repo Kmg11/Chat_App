@@ -17,20 +17,24 @@ import { socketState } from '@/socket';
       }"
     >
       <template v-if="socketState.connectionLoading">
-        <v-progress-circular :size="40" :color="'blue'" indeterminate></v-progress-circular>
+        <v-progress-circular
+          :size="40"
+          :color="'blue'"
+          indeterminate
+        ></v-progress-circular>
 
         <p :style="{ fontSize: '0.875rem' }">Connecting to server</p>
       </template>
 
-      <template v-if="socketState.connectionError">
+      <div v-if="socketState.connectionError">
         <v-alert type="error" :style="{ maxWidth: '400px' }" color="red">
           {{ socketState.connectionError }}
         </v-alert>
-      </template>
+      </div>
     </div>
 
-    <div v-if="socketState.connected">
+    <template v-if="socketState.connected">
       <RouterView />
-    </div>
+    </template>
   </div>
 </template>
